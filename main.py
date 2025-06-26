@@ -75,7 +75,7 @@ Person: {user_interests}.
 def send_email(html_body, subject="Trending Topics Relevantes", to_email="hola@mundo.com"):
     message = f"""\
 From: no-reply@localhost
-To: {EMAIL_USERNAME}
+To: hanscastroadmn@gmail.com
 Subject: {subject}
 MIME-Version: 1.0
 Content-Type: text/html; charset=utf-8
