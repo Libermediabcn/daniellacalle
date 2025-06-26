@@ -12,6 +12,9 @@ jobs:
       GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
 
     steps:
+      - name: Instala dependencias
+        run: sudo apt-get update && sudo apt-get install -y postfix
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
