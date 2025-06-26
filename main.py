@@ -53,39 +53,24 @@ Person: {user_interests}.
 
 
 # 3. Enviar email HTML
-# def send_email(html_body, subject="Trending Topics Relevantes", to_email="hola@mundo.com"):
-#     # with open("trending_topics2.html", "w") as file:
-#     #     file.write(html_body)
-
-#     msg = MIMEMultipart("alternative")
-#     msg["Subject"] = subject
-#     msg["From"] = EMAIL_USERNAME
-#     msg["To"] = to_email
-
-#     html_part = MIMEText(html_body, "html")
-#     msg.attach(html_part)
-
-#     server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-#     server.starttls()
-#     server.login(EMAIL_USERNAME, EMAIL_PASSWORD)
-#     server.sendmail(EMAIL_USERNAME, EMAIL_USERNAME, msg.as_string())
-#     server.quit()
-
-
 def send_email(html_body, subject="Trending Topics Relevantes", to_email="hola@mundo.com"):
-    message = f"""\
-From: no-reply@localhost
-To: hanscastroadmn@gmail.com
-Subject: {subject}
-MIME-Version: 1.0
-Content-Type: text/html; charset=utf-8
+    # with open("trending_topics2.html", "w") as file:
+    #     file.write(html_body)
 
-{html_body}
-"""
-    try:
-        subprocess.run(["/usr/sbin/sendmail", "-t", "-oi"], input=message.encode(), check=True)
-    except Exception as e:
-        print(f"[ERROR] No se pudo enviar el email con sendmail: {e}")
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = EMAIL_USERNAME
+    msg["To"] = to_email
+
+    html_part = MIMEText(html_body, "html")
+    msg.attach(html_part)
+
+    server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+    server.starttls()
+    server.login(EMAIL_USERNAME, EMAIL_PASSWORD)
+    server.sendmail(EMAIL_USERNAME, EMAIL_USERNAME, msg.as_string())
+    server.quit()
+
 
 # Ejecución principal
 if __name__ == "__main__":
